@@ -15,11 +15,10 @@ export const uploadToS3 = async (key, body, contentType = "text/csv") => {
     Key: key,
     Body: body,
     ContentType: contentType,
-    ACL: "public-read", // Make the file publicly accessible
   });
 
   await s3Client.send(command);
 
-  // Return the public URL
+  // Return the S3 object URL
   return `https://${env.awsS3Bucket}.s3.${env.awsRegion}.amazonaws.com/${key}`;
 };
