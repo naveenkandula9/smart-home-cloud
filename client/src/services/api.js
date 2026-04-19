@@ -95,4 +95,9 @@ export const removeSchedule = async (scheduleId) => {
   return data.data;
 };
 
+export const exportReport = async () => {
+  const { data } = await api.get("/reports/export");
+  return data.data;
+};
+
 export default api;

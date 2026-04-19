@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import {
+  Download,
   RefreshCw,
   ShieldAlert,
 } from "lucide-react";
@@ -19,6 +20,7 @@ import { useVoiceControl } from "../hooks/useVoiceControl";
 import {
   createSchedule,
   executeScene,
+  exportReport,
   fetchActivities,
   fetchDevices,
   fetchSchedules,
@@ -54,6 +56,7 @@ const DashboardPage = () => {
   const [updatingKey, setUpdatingKey] = useState("");
   const [busyScene, setBusyScene] = useState("");
   const [scheduleBusy, setScheduleBusy] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const ignoredActivityIdsRef = useRef(new Set());
 
   const syncDashboard = async ({ showLoader = false, successMessage = "" } = {}) => {
@@ -324,6 +327,33 @@ const DashboardPage = () => {
     toast.success("You have been logged out.");
   };
 
+  const handleExportReport = async () => {
+    try {
+      setIsExporting(true);
+      const result = await exportReport();
+
+      // Show success toast with file link
+      toast.success(
+        <div>
+          <p>Report exported successfully!</p>
+          <a
+            href={result.downloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 hover:text-cyan-300 underline"
+          >
+            Download CSV Report
+          </a>
+        </div>,
+        { duration: 10000 }
+      );
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to export report.");
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   const activeCount = useMemo(
     () =>
       Object.entries(devices).filter(([deviceName, device]) =>
@@ -429,6 +459,19 @@ const DashboardPage = () => {
               onDeleteSchedule={handleDeleteSchedule}
               isBusy={scheduleBusy}
             />
+            
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={handleExportReport}
+                disabled={isExporting}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Download className="h-4 w-4" />
+                {isExporting ? "Exporting..." : "Export Report to AWS"}
+              </button>
+            </div>
+            
             <ActivityFeed activities={activities} />
           </section>
         </div>

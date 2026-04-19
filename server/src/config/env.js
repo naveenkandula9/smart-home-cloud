@@ -24,6 +24,10 @@ export const env = {
   jwtSecret: process.env.JWT_SECRET || "smart-home-v2-dev-secret",
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
   schedulerTimezone: process.env.SCHEDULER_TIMEZONE || "Asia/Kolkata",
+  awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+  awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+  awsRegion: process.env.AWS_REGION || "us-east-1",
+  awsS3Bucket: process.env.AWS_S3_BUCKET || "",
 };
 
 export const allowedOrigins = splitOrigins(env.clientUrl);

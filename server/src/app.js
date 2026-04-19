@@ -9,6 +9,7 @@ import activityRoutes from "./routes/activityRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import deviceRoutes from "./routes/deviceRoutes.js";
 import scheduleRoutes from "./routes/scheduleRoutes.js";
+import reportsRoutes from "./routes/reportsRoutes.js";
 import { authenticateRequest, optionalAuth } from "./middleware/authMiddleware.js";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
 
@@ -50,6 +51,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/devices", authenticateRequest, deviceRoutes);
 app.use("/api/activities", authenticateRequest, activityRoutes);
 app.use("/api/schedules", authenticateRequest, scheduleRoutes);
+app.use("/api/reports", authenticateRequest, reportsRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
