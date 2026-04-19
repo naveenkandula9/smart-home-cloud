@@ -10,7 +10,7 @@ const cardTransition = {
 const DeviceVisual = ({ variant, Icon, isActive, statusLabel, temperature }) => {
   if (variant === "light") {
     return (
-      <div className="relative flex h-32 items-center justify-center">
+      <div className="relative flex h-24 items-center justify-center sm:h-32">
         <motion.div
           animate={{
             scale: isActive ? 1.06 : 1,
@@ -38,7 +38,7 @@ const DeviceVisual = ({ variant, Icon, isActive, statusLabel, temperature }) => 
 
   if (variant === "fan") {
     return (
-      <div className="flex h-32 items-center justify-center">
+      <div className="flex h-24 items-center justify-center sm:h-32">
         <motion.div
           animate={{ rotate: isActive ? 360 : 0 }}
           transition={{
@@ -60,7 +60,7 @@ const DeviceVisual = ({ variant, Icon, isActive, statusLabel, temperature }) => 
 
   if (variant === "door") {
     return (
-      <div className="flex h-32 items-center justify-center">
+      <div className="flex h-24 items-center justify-center sm:h-32">
         <div className="relative h-28 w-24 rounded-[22px] border border-white/10 bg-slate-900/50 p-2">
           <motion.div
             animate={{
@@ -84,7 +84,7 @@ const DeviceVisual = ({ variant, Icon, isActive, statusLabel, temperature }) => 
   }
 
   return (
-    <div className="relative flex h-32 items-center justify-center">
+    <div className="relative flex h-24 items-center justify-center sm:h-32">
       <motion.div
         animate={{
           opacity: isActive ? [0.4, 0.7, 0.4] : 0.15,
@@ -124,7 +124,7 @@ const DeviceCard = ({ device, config, onToggle, isUpdating, roomLabel }) => {
       className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-slate-950/40 p-[1px] shadow-neon"
     >
       <div className="ring-glow group-hover:opacity-100" />
-      <div className="panel-highlight relative rounded-[31px] p-5">
+      <div className="panel-highlight relative rounded-[31px] p-4 sm:p-5">
         <div
           className={`absolute inset-x-6 top-0 h-24 rounded-full blur-3xl transition-opacity duration-500 ${
             isActive ? config.glowClass : "opacity-30"
@@ -142,7 +142,7 @@ const DeviceCard = ({ device, config, onToggle, isUpdating, roomLabel }) => {
                 {roomLabel}
               </div>
             ) : null}
-            <h3 className="mt-4 font-display text-2xl text-white">{config.title}</h3>
+            <h3 className="mt-4 font-display text-xl text-white sm:text-2xl">{config.title}</h3>
             <p className="mt-2 text-sm text-slate-300">{config.description}</p>
           </div>
 

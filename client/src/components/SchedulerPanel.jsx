@@ -51,19 +51,19 @@ const SchedulerPanel = ({ schedules, onCreateSchedule, onToggleSchedule, onDelet
   };
 
   return (
-    <section className="glass-panel panel-highlight rounded-[32px] p-6">
+    <section className="glass-panel panel-highlight rounded-[24px] p-4 sm:rounded-[32px] sm:p-6">
       <div>
         <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Automation scheduler</p>
-        <h2 className="mt-3 font-display text-3xl text-white">Daily routine automation</h2>
+        <h2 className="mt-3 font-display text-2xl text-white sm:text-3xl">Daily routine automation</h2>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
           Create recurring schedules that the backend executes with `node-cron`, then watch the live
           dashboard update automatically when tasks run.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-5 xl:grid-cols-[0.9fr,1.1fr]">
-        <form onSubmit={handleSubmit} className="rounded-[28px] border border-white/10 bg-slate-950/45 p-5">
-          <div className="grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:gap-5 xl:grid-cols-[0.9fr,1.1fr]">
+        <form onSubmit={handleSubmit} className="rounded-[24px] border border-white/10 bg-slate-950/45 p-4 sm:p-5">
+          <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
             <label className="block sm:col-span-2">
               <span className="mb-2 block text-sm text-slate-300">Schedule name</span>
               <input
@@ -155,7 +155,7 @@ const SchedulerPanel = ({ schedules, onCreateSchedule, onToggleSchedule, onDelet
               schedules.map((schedule) => (
                 <div
                   key={schedule.id}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4"
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 sm:px-4 sm:py-4"
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div>
@@ -168,7 +168,7 @@ const SchedulerPanel = ({ schedules, onCreateSchedule, onToggleSchedule, onDelet
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <label className="inline-flex items-center gap-2 text-sm text-slate-300">
                         <input
                           type="checkbox"

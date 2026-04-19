@@ -17,20 +17,20 @@ const chartPanelClass = "rounded-[28px] border border-white/10 bg-slate-950/45 p
 
 const AnalyticsPanel = ({ statusData, devicePowerData }) => {
   return (
-    <section className="glass-panel panel-highlight rounded-[32px] p-6">
+    <section className="glass-panel panel-highlight rounded-[24px] p-4 sm:rounded-[32px] sm:p-6">
       <div>
         <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Analytics</p>
-        <h2 className="mt-3 font-display text-3xl text-white">Live device status</h2>
+        <h2 className="mt-3 font-display text-2xl text-white sm:text-3xl">Live device status</h2>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
           Track how many devices are active right now and which appliances are currently ON or OFF across
           the home.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-5 xl:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:gap-5 xl:grid-cols-2">
         <div className={chartPanelClass}>
           <p className="text-sm font-semibold text-white">Active vs inactive devices</p>
-          <div className="mt-4 h-72">
+          <div className="mt-4 h-48 sm:h-64 md:h-72">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie data={statusData} dataKey="value" nameKey="name" innerRadius={68} outerRadius={96}>
@@ -52,7 +52,7 @@ const AnalyticsPanel = ({ statusData, devicePowerData }) => {
 
         <div className={chartPanelClass}>
           <p className="text-sm font-semibold text-white">Devices ON/OFF</p>
-          <div className="mt-4 h-72">
+          <div className="mt-4 h-48 sm:h-64 md:h-72">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={devicePowerData}>
                 <CartesianGrid stroke="rgba(148,163,184,0.12)" vertical={false} />

@@ -14,24 +14,24 @@ const TopNavbar = ({ user, lastUpdated, realtimeState, activeCount, totalCount }
   }, []);
 
   return (
-    <header className="glass-panel panel-highlight rounded-[32px] p-5 sm:p-6">
-      <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
+    <header className="glass-panel panel-highlight rounded-[32px] p-4 sm:p-5 md:p-6">
+      <div className="flex flex-col gap-4 sm:gap-6 xl:flex-row xl:items-center xl:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/80">Welcome back</p>
-          <h1 className="mt-3 font-display text-3xl text-white sm:text-4xl">{user?.name}'s Smart Home</h1>
+          <h1 className="mt-3 font-display text-2xl text-white sm:text-3xl sm:text-4xl">{user?.name}'s Smart Home</h1>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300">
             Real-time rooms, analytics, automation schedules, and voice-driven scenes now run from a
             single premium command surface.
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-3">
-          <div className="rounded-[24px] border border-white/10 bg-slate-950/45 px-4 py-4">
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+          <div className="rounded-[24px] border border-white/10 bg-slate-950/45 px-3 py-3 sm:px-4 sm:py-4">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-400">
               <Clock3 className="h-4 w-4 text-cyan-300" />
               Current time
             </div>
-            <p className="mt-3 font-display text-2xl text-white">
+            <p className="mt-3 font-display text-xl text-white sm:text-2xl">
               {new Intl.DateTimeFormat("en-IN", {
                 hour: "numeric",
                 minute: "2-digit",
@@ -41,16 +41,16 @@ const TopNavbar = ({ user, lastUpdated, realtimeState, activeCount, totalCount }
             <p className="mt-1 text-xs text-slate-400">{formatTimestamp(now.toISOString())}</p>
           </div>
 
-          <div className="rounded-[24px] border border-white/10 bg-slate-950/45 px-4 py-4">
+          <div className="rounded-[24px] border border-white/10 bg-slate-950/45 px-3 py-3 sm:px-4 sm:py-4">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-400">
               <Activity className="h-4 w-4 text-emerald-300" />
               Status summary
             </div>
-            <p className="mt-3 font-display text-2xl text-white">{`${activeCount}/${totalCount}`}</p>
+            <p className="mt-3 font-display text-xl text-white sm:text-2xl">{`${activeCount}/${totalCount}`}</p>
             <p className="mt-1 text-xs text-slate-400">Devices active across all rooms</p>
           </div>
 
-          <div className="rounded-[24px] border border-white/10 bg-slate-950/45 px-4 py-4">
+          <div className="rounded-[24px] border border-white/10 bg-slate-950/45 px-3 py-3 sm:px-4 sm:py-4 sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-400">
               {realtimeState === "live" ? (
                 <ShieldCheck className="h-4 w-4 text-cyan-300" />
@@ -59,7 +59,7 @@ const TopNavbar = ({ user, lastUpdated, realtimeState, activeCount, totalCount }
               )}
               Realtime sync
             </div>
-            <p className="mt-3 font-display text-2xl text-white">
+            <p className="mt-3 font-display text-xl text-white sm:text-2xl">
               {realtimeState === "live" ? "Connected" : "Reconnecting"}
             </p>
             <p className="mt-1 text-xs text-slate-400">

@@ -358,7 +358,7 @@ const DashboardPage = () => {
     <main className="relative min-h-screen overflow-hidden">
       <AmbientBackground />
 
-      <div className="relative mx-auto flex w-full max-w-[1600px] gap-6 px-4 py-6 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex w-full max-w-[1600px] gap-4 px-4 py-4 sm:gap-6 sm:px-6 sm:py-6 lg:px-8">
         <Sidebar user={user} onLogout={handleLogout} />
 
         <div className="min-w-0 flex-1 space-y-6">
@@ -370,31 +370,29 @@ const DashboardPage = () => {
             totalCount={Object.keys(DEVICE_CONFIG).length}
           />
 
-          {error ? (
-            <section className="glass-panel panel-highlight rounded-[32px] p-6">
+            <section className="glass-panel panel-highlight rounded-[24px] p-4 sm:rounded-[32px] sm:p-6">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div className="flex items-start gap-4">
-                  <div className="rounded-2xl bg-rose-400/10 p-3 text-rose-200">
-                    <ShieldAlert className="h-6 w-6" />
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="rounded-2xl bg-rose-400/10 p-2 sm:p-3 text-rose-200">
+                    <ShieldAlert className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div>
-                    <h2 className="font-display text-2xl text-white">Dashboard sync issue</h2>
+                    <h2 className="font-display text-xl text-white sm:text-2xl">Dashboard sync issue</h2>
                     <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">{error}</p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => syncDashboard({ successMessage: "Dashboard refreshed." })}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-400 to-sky-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-2 sm:px-5 sm:py-3 text-sm font-semibold text-slate-950 transition hover:scale-[1.01]"
                 >
                   <RefreshCw className="h-4 w-4" />
                   Retry sync
                 </button>
               </div>
             </section>
-          ) : null}
 
-          <section id="overview" className="grid gap-6 xl:grid-cols-[1.1fr,0.9fr]">
+          <section id="overview" className="grid gap-4 sm:gap-6 xl:grid-cols-[1.1fr,0.9fr]">
             <ScenePanel onRunScene={handleRunScene} busyScene={busyScene} />
             <VoiceControlPanel
               isSupported={isSupported}
@@ -406,7 +404,7 @@ const DashboardPage = () => {
             />
           </section>
 
-          <section id="rooms" className="space-y-6">
+          <section id="rooms" className="space-y-4 sm:space-y-6">
             {rooms.map((room) => (
               <RoomSection
                 key={room.id}
@@ -423,7 +421,7 @@ const DashboardPage = () => {
             <AnalyticsPanel statusData={statusData} devicePowerData={devicePowerData} />
           </section>
 
-          <section id="automation" className="space-y-6">
+          <section id="automation" className="space-y-4 sm:space-y-6">
             <SchedulerPanel
               schedules={schedules}
               onCreateSchedule={handleCreateSchedule}

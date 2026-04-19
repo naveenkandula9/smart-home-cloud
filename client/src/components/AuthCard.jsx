@@ -20,7 +20,7 @@ const AuthCard = ({
     <motion.section
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-panel panel-highlight relative z-10 w-full max-w-md overflow-hidden rounded-[36px] p-8 shadow-ambient"
+      className="glass-panel panel-highlight relative z-10 w-full max-w-sm rounded-[36px] p-6 sm:max-w-md sm:p-8 shadow-ambient"
     >
       <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_70%)]" />
 
@@ -28,7 +28,7 @@ const AuthCard = ({
         <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
           Smart Home Cloud V2
         </div>
-        <h1 className="mt-5 font-display text-4xl text-white">{title}</h1>
+        <h1 className="mt-5 font-display text-3xl text-white sm:text-4xl">{title}</h1>
         <p className="mt-3 text-sm leading-6 text-slate-300">{description}</p>
 
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
